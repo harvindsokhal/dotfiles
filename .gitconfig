@@ -1,0 +1,6 @@
+[user]
+	name = harvindsokhal
+	email = harvindsokhal@gmail.com
+
+[include]
+	path = ~/.gitconfig.local

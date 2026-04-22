@@ -58,6 +58,11 @@ return {
           highlights.TelescopeResultsBorder = { bg = "NONE", fg = colors.border }
           highlights.TelescopePreviewNormal = { bg = "NONE" }
           highlights.TelescopePreviewBorder = { bg = "NONE", fg = colors.border }
+          highlights.NvimTreeNormal = { bg = "NONE" }
+          highlights.NvimTreeNormalNC = { bg = "NONE" }
+          highlights.NvimTreeEndOfBuffer = { bg = "NONE" }
+          highlights.NvimTreeWinSeparator = { bg = "NONE", fg = colors.border }
+          highlights.NvimTreeRootFolder = { fg = colors.fg }
         end,
       })
 

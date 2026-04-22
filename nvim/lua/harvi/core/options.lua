@@ -27,6 +27,9 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 
 --clipboard
+opt.fileformats = { "unix", "dos" }
+opt.fileformat = "unix"
+
 if vim.fn.has("wsl") == 1 then
 	vim.g.clipboard = {
 		name = "WslClipboard",
@@ -41,5 +44,5 @@ if vim.fn.has("wsl") == 1 then
 		cache_enabled = 0,
 	}
 
-	vim.opt.clipboard = "unnamedplus"
+  opt.clipboard = "unnamedplus"
 end

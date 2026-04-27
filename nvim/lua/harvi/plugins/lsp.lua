@@ -30,20 +30,27 @@ return {
       "folke/lazydev.nvim",
     },
     config = function()
+      local lspconfig = require("lspconfig")
+
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
           "rust_analyzer",
+          "ts_ls",
+          "html",
+          "cssls",
+          "tailwindcss",
+          "pyright",
         },
         handlers = {
           function(server_name)
-            require("lspconfig")[server_name].setup({
+            lspconfig[server_name].setup({
               capabilities = capabilities,
             })
           end,
 
           ["lua_ls"] = function()
-            require("lspconfig").lua_ls.setup({
+            lspconfig.lua_ls.setup({
               capabilities = capabilities,
               settings = {
                 Lua = {
@@ -65,7 +72,7 @@ return {
           end,
 
           ["rust_analyzer"] = function()
-            require("lspconfig").rust_analyzer.setup({
+            lspconfig.rust_analyzer.setup({
               capabilities = capabilities,
               settings = {
                 ["rust-analyzer"] = {
@@ -77,6 +84,50 @@ return {
                   },
                 },
               },
+            })
+          end,
+
+          ["ts_ls"] = function()
+            lspconfig.ts_ls.setup({
+              capabilities = capabilities,
+              filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+              },
+            })
+          end,
+
+          ["cssls"] = function()
+            lspconfig.cssls.setup({
+              capabilities = capabilities,
+              filetypes = {
+                "css",
+                "scss",
+                "less",
+              },
+            })
+          end,
+
+          ["tailwindcss"] = function()
+            lspconfig.tailwindcss.setup({
+              capabilities = capabilities,
+              filetypes = {
+                "html",
+                "css",
+                "scss",
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+              },
+            })
+          end,
+
+          ["pyright"] = function()
+            lspconfig.pyright.setup({
+              capabilities = capabilities,
             })
           end,
         },

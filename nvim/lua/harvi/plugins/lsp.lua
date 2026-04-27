@@ -31,10 +31,15 @@ return {
     },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
+        ensure_installed = {
+          "lua_ls",
+          "rust_analyzer",
+        },
         handlers = {
           function(server_name)
-            require("lspconfig")[server_name].setup({})
+            require("lspconfig")[server_name].setup({
+              capabilities = capabilities,
+            })
           end,
 
           ["lua_ls"] = function()
@@ -53,6 +58,22 @@ return {
                   },
                   telemetry = {
                     enable = false,
+                  },
+                },
+              },
+            })
+          end,
+
+          ["rust_analyzer"] = function()
+            require("lspconfig").rust_analyzer.setup({
+              capabilities = capabilities,
+              settings = {
+                ["rust-analyzer"] = {
+                  cargo = {
+                    allFeatures = true,
+                  },
+                  checkOnSave = {
+                    command = "clippy",
                   },
                 },
               },

@@ -64,3 +64,5 @@ export PATH="$HOME/go/bin:$PATH"
 # Created by `pipx` on 2026-04-29 14:20:17
 export PATH="$PATH:/home/harvi/.local/bin"
 export PATH="$HOME/go/bin:$PATH"
+
+export PATH="/opt/nvim/bin:$PATH"

@@ -1,3 +1,13 @@
+# SSH agent
+export SSH_AUTH_SOCK="$HOME/.ssh/ssh-agent.sock"
+
+if [ ! -S "$SSH_AUTH_SOCK" ]; then
+  rm -f "$SSH_AUTH_SOCK"
+  eval "$(ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null)"
+fi
+
+ssh-add -l >/dev/null 2>&1 || ssh-add "$HOME/.ssh/id_ed25519"
+
 # Enable Powerlevel10k instant prompt. Keep near the top.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -49,15 +59,3 @@ alias gp="git push"
 
 # Load Powerlevel10k config
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# Start ssh-agent if not runinng
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-  eval "$(ssh-agent -s)"
-fi
-
-# Add key if not already added
-if ! ssh-add -l | grep -q "id_ed25519"; then
-  ssh-add ~/.ssh/id_ed25519
-fi
-export PATH="/opt/nvim/bin:$PATH"

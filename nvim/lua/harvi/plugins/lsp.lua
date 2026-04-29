@@ -50,6 +50,7 @@ return {
 					"angularls",
 					"vue_ls",
 					"bashls",
+					"intelephense",
 				},
 			})
 
@@ -64,6 +65,9 @@ return {
 					"goimports",
 					"clang-format",
 					"shfmt",
+					"phpcs",
+					"phpcbf",
+					"phpstan",
 
 					-- linters
 					"eslint_d",
@@ -217,6 +221,95 @@ return {
 				filetypes = { "sh", "bash", "zsh" },
 			})
 
+			vim.lsp.config("intelephense", {
+				capabilities = capabilities,
+				settings = {
+					intelephense = {
+						stubs = {
+							"apache",
+							"bcmath",
+							"bz2",
+							"calendar",
+							"com_dotnet",
+							"Core",
+							"ctype",
+							"curl",
+							"date",
+							"dba",
+							"dom",
+							"enchant",
+							"exif",
+							"FFI",
+							"fileinfo",
+							"filter",
+							"fpm",
+							"ftp",
+							"gd",
+							"gettext",
+							"hash",
+							"iconv",
+							"imap",
+							"intl",
+							"json",
+							"ldap",
+							"libxml",
+							"mbstring",
+							"meta",
+							"mysqli",
+							"oci8",
+							"odbc",
+							"openssl",
+							"pcntl",
+							"pcre",
+							"PDO",
+							"pdo_ibm",
+							"pdo_mysql",
+							"pdo_pgsql",
+							"pdo_sqlite",
+							"pgsql",
+							"Phar",
+							"posix",
+							"pspell",
+							"readline",
+							"Reflection",
+							"session",
+							"shmop",
+							"SimpleXML",
+							"snmp",
+							"soap",
+							"sockets",
+							"sodium",
+							"SPL",
+							"sqlite3",
+							"standard",
+							"superglobals",
+							"sysvmsg",
+							"sysvsem",
+							"sysvshm",
+							"tidy",
+							"tokenizer",
+							"wordpress",
+							"xml",
+							"xmlreader",
+							"xmlrpc",
+							"xmlwriter",
+							"xsl",
+							"Zend OPcache",
+							"zip",
+							"zlib",
+						},
+						environment = {
+							includePaths = {
+								"wp-content/plugins/woocommerce",
+							},
+						},
+						files = {
+							maxSize = 5000000,
+						},
+					},
+				},
+			})
+
 			-- =========================
 			-- ENABLE SERVERS
 			-- =========================
@@ -242,6 +335,7 @@ return {
 				"bashls",
 				"angularls",
 				"vue_ls",
+				"intelephense",
 			}
 
 			for _, server in ipairs(servers) do

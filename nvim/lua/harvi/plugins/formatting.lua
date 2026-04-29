@@ -11,18 +11,30 @@ return {
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         svelte = { "prettier" },
-        css = { "prettier" },
+        vue = { "prettier" },
         html = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
         graphql = { "prettier" },
-        liquid = { "prettier" },
+        prisma = { "prettier" },
+
         lua = { "stylua" },
         python = { "isort", "black" },
+        go = { "goimports", "gofumpt" },
+        rust = { "rustfmt" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        cs = { "csharpier" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        zsh = { "shfmt" },
       },
+
       format_on_save = {
-        lsp_fallback = true,
+        lsp_format = "fallback",
         async = false,
         timeout_ms = 1000,
       },
@@ -30,10 +42,10 @@ return {
 
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
       conform.format({
-        lsp_fallback = true,
+        lsp_format = "fallback",
         async = false,
         timeout_ms = 1000,
       })
-    end, { desc = "Format file or range (in visual mode)" })
+    end, { desc = "Format file or range" })
   end,
 }

@@ -49,6 +49,7 @@ return {
 					"bashls",
 					"angularls",
 					"vue_ls",
+					"bashls",
 				},
 			})
 

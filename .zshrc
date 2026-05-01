@@ -1,12 +1,11 @@
 # SSH agent
 export SSH_AUTH_SOCK="$HOME/.ssh/ssh-agent.sock"
 
-if [ ! -S "$SSH_AUTH_SOCK" ]; then
+if [ ! -S "$SSH_AUTH_SOCK" ] || ! ssh-add -l >/dev/null 2>&1; then
   rm -f "$SSH_AUTH_SOCK"
   eval "$(ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null)"
+  ssh-add "$HOME/.ssh/id_ed25519"
 fi
-
-ssh-add -l >/dev/null 2>&1 || ssh-add "$HOME/.ssh/id_ed25519"
 
 # Enable Powerlevel10k instant prompt. Keep near the top.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -66,3 +65,6 @@ export PATH="$PATH:/home/harvi/.local/bin"
 export PATH="$HOME/go/bin:$PATH"
 
 export PATH="/opt/nvim/bin:$PATH"
+
+# opencode
+export PATH=/home/harvi/.opencode/bin:$PATH

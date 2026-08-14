@@ -29,7 +29,6 @@ setopt histignorealldups sharehistory
 export EDITOR="nvim"
 
 # Go
-export GOROOT="/usr/local/go"
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 

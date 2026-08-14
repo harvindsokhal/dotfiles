@@ -125,6 +125,22 @@ return {
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
 
+			vim.diagnostic.config({
+				virtual_text = {
+					spacing = 2,
+					source = "if_many",
+					prefix = "●",
+				},
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				severity_sort = true,
+				float = {
+					border = "rounded",
+					source = true,
+				},
+			})
+
 			-- =========================
 			-- LSP CONFIGS (NEW API)
 			-- =========================
